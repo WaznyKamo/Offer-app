@@ -1,4 +1,4 @@
-from Offer_app import db
+from __init__ import db
 from db_models import Category, Product
 
 db.session.add(Category(name='Food'))

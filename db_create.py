@@ -1,4 +1,4 @@
-from Offer_app import db
+from __init__ import db
 
 
 if __name__ == '__main__':

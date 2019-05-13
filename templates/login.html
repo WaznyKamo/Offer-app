@@ -2,6 +2,7 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<form method="POST">
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             <ul class=flashes>
@@ -12,4 +13,13 @@
         {% endif %}
     {% endwith %}
 
+    {{ form.csrf_token }}
+
+    {{ form.email }}: {{ form.email.label }}
+
+    {{ form.password }}: {{ form.password.label }}
+
+    <input type="submit", value="Log in">
+
+</form>
 {% endblock %}

@@ -1,5 +1,5 @@
 from flask_login import UserMixin
-from Offer_app import db
+from __init__ import db
 
 
 class Client(db.Model):

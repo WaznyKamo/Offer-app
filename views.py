@@ -1,5 +1,5 @@
-from flask import render_template, request, flash, redirect
-from Offer_app import app, db
+from flask import render_template, request, flash, redirect, session
+from __init__ import app, db
 from db_models import Category, Product
 from forms import Login, UserForm
 from db_models import User
@@ -53,8 +53,17 @@ def login():
     form = Login()
 
     if request.method == 'POST' and form.validate():
-        validated_data = form.data.copy()
-        validated_data.pop('csrf_token')
 
-
+        user_data = User.query.filter_by(email=form.email.data).first()
+        if user_data is not None:
+            if user_data.password == form.password.data:
+                session['email'] = form.email.data
+                return redirect('/')
+            else:
+                flash('Incorrect password')
+                return redirect('login')
+        else:
+            flash('User does not exist')
+            return redirect('/login')
+    return render_template('login.html', form=Login())
 
