@@ -1,0 +1,43 @@
+
+{% extends "layout.html" %}
+{% block content %}
+<div>
+<!-- dane z formularza zostaną przesłane jako POST pod ten sam URL -->
+<form method="POST">
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <!--
+    tu wstawiony zostanie token CSRF;
+    token nie jest wyświetlany bo jest typu 'hidden';
+    token jest przesyłany wraz z pozostałymi parametrami
+     -->
+    {{ form.csrf_token }}
+
+    <!-- wstawiamy etykietkę dla pola 'first_name' i samo pole -->
+    {{ form.first_name.label }}: {{ form.first_name }}
+
+    <!-- wstawiamy etykietkę dla pola 'last_name' i samo pole -->
+    {{ form.last_name.label }} {{ form.last_name }}
+
+    <!-- wstawiamy etykietkę dla pola 'last_name' i samo pole -->
+    {{ form.email.label }} {{ form.email }}
+
+    <!-- wstawiamy etykietkę dla pola 'password' i samo pole. Flask odpowiednio potraktuje pole typu password -->
+    {{ form.password.label }} {{ form.password }}
+
+    <!-- formularz musi mieć przycisk wywołujący 'POST' -->
+    <input type="submit" value="Add account">
+
+</form>
+
+</div>
+
+{% endblock %}

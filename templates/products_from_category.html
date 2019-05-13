@@ -1,0 +1,21 @@
+
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>Products:</h2>
+<table>
+    <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th></th>
+    </tr>
+    {%for product in products%}
+    <tr>
+        <th>{{product.name}}</th>
+        <th>{{product.price|round(2)}}</th>
+        <th>Add to cart</th>
+    </tr>
+    {%endfor%}
+</table>
+
+{% endblock %}

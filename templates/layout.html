@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html, body{
+            margin: 0;
+            background-color: burlywood;
+            font-size: 20px;
+        }
+
+        header{
+            top: 0px;
+            background-color: burlywood;
+            text-align: center;
+            color: darkslategrey;
+            font-size: 30px;
+            height: 100px;
+            margin-top: 0px;
+        }
+
+        nav{
+            position: absolute;
+            left: 0px;
+            width: 140px;
+            background-color: darkgray;
+            height: 940px;
+            padding: 10px 30px;
+        }
+        article{
+            margin-left: 200px;
+            background-color: beige;
+            overflow: auto;
+            padding: 50px 50px 10px;
+            min-height: 900px;
+        }
+        section{
+            display: table;
+            clear: both;
+            width: 100%;
+        }
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            padding: 8px;
+            size: 10px;
+        }
+        th{
+            border: 1px solid black;
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+<header>
+    <h1>Welcome to the site made by <i>WaznyKamo</i></h1>
+</header>
+<section>
+<nav>
+    <a href="{{url_for('register')}}">Register</a><br>
+    <a href="{{url_for('login')}}">Login</a>
+    <h3>Navigation:<br></h3>
+    <ul>
+        <li><a href="{{url_for('home')}}">Home page</a> </li>
+        <li><a href="{{ url_for('show_categories') }}">Categories</a><br> </li>
+        <li><a href="{{ url_for('show_products') }}">Products</a></li>
+    </ul>
+</nav>
+
+<article>
+    {% block content %}
+    {% endblock %}
+</article>
+</section>
+</body>
+</html>
